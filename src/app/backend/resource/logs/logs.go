@@ -201,6 +201,7 @@ func (self LogLines) getLineIndex(logLineId *LogLineId) int {
 	})
 
 	linesMatched := 0
+	logTimestamp = LogTimestamp(strings.ReplaceAll(string(logTimestamp), " ", "+"))         // fix it because of URL decoding
 	if matchingStartedAt < len(self) && self[matchingStartedAt].Timestamp == logTimestamp { // match found
 		for (matchingStartedAt+linesMatched) < len(self) && self[matchingStartedAt+linesMatched].Timestamp == logTimestamp {
 			linesMatched += 1
